@@ -2,28 +2,21 @@ angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope, $ionicLoading) {
  
-    google.maps.event.addDomListener(window, 'load', function() {
-        var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
- 
+    function initialize() {
+        var myLatlng = new google.maps.LatLng(49.832, 24.012);
+        
         var mapOptions = {
-            center: myLatlng,
-            zoom: 16,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
+          center: myLatlng,
+          zoom: 16,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
         };
- 
-        var map = new google.maps.Map(document.getElementById("parking_map"), mapOptions);
- /*
-        navigator.geolocation.getCurrentPosition(function(pos) {
-            map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-            var myLocation = new google.maps.Marker({
-                position: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
-                map: map,
-                title: "My Location"
-            });
-        });
- */
+        var map = new google.maps.Map(document.getElementById("parking_map"),
+            mapOptions);
+        
+
         $scope.map = map;
-    });
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
  
 })
 
